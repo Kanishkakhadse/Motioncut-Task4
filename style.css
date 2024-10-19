@@ -1,0 +1,114 @@
+/* General Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+header {
+    background-color: #4CAF50;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    width: 100%;
+}
+
+header h1 {
+    font-size: 2.5rem;
+}
+
+/* Search Bar Section */
+.search-section {
+    margin-top: 50px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.search-form {
+    display: flex;
+    width: 50%;
+}
+
+#searchBar {
+    flex: 1;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px 0 0 5px;
+    font-size: 1.1rem;
+    outline: none;
+}
+
+#searchBar::placeholder {
+    color: #aaa;
+}
+
+#searchButton {
+    padding: 15px 25px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 0 5px 5px 0;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#searchButton:hover {
+    background-color: #45a049;
+}
+
+/* Search Results Section */
+.results-section {
+    margin-top: 30px;
+    text-align: center;
+    width: 80%;
+}
+
+.results-section h2 {
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+}
+
+#results {
+    padding: 20px;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .search-form {
+        width: 80%;
+    }
+
+    header h1 {
+        font-size: 2rem;
+    }
+
+    #searchBar {
+        font-size: 1rem;
+    }
+
+    #searchButton {
+        font-size: 1rem;
+    }
+
+    .results-section h2 {
+        font-size: 1.5rem;
+    }
+}

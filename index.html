@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Master</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Search Master</h1>
+        </header>
+
+        <!-- Search Bar Section -->
+        <section class="search-section">
+            <form class="search-form">
+                <input type="text" id="searchBar" placeholder="What are you looking for?" required>
+                <button type="submit" id="searchButton">Search</button>
+            </form>
+        </section>
+
+        <!-- Placeholder for Results -->
+        <section class="results-section">
+            <h2>Search Results</h2>
+            <div id="results"></div>
+        </section>
+    </div>
+
+    <!-- Add JavaScript at the end of the body -->
+    <script>
+        // Simulated search results (could be fetched from a backend in a real app)
+        const simulatedResults = [
+            { title: "How to learn HTML", description: "A comprehensive guide to learning HTML for beginners." },
+            { title: "CSS Best Practices", description: "Learn the best practices for writing clean and maintainable CSS." },
+            { title: "JavaScript for Beginners", description: "An introduction to JavaScript, covering the basics." },
+            { title: "Responsive Design Tips", description: "How to make your web pages look great on any device." },
+            { title: "Advanced CSS Techniques", description: "Take your CSS skills to the next level with these tips." }
+        ];
+
+        // Function to search through simulated results
+        function searchResults(query) {
+            return simulatedResults.filter(result => 
+                result.title.toLowerCase().includes(query.toLowerCase()) ||
+                result.description.toLowerCase().includes(query.toLowerCase())
+            );
+        }
+
+        // JavaScript to handle form submission
+        document.querySelector('.search-form').addEventListener('submit', function(e) {
+            e.preventDefault();  // Prevent form submission from refreshing the page
+            let query = document.querySelector('#searchBar').value;  // Get search query
+            let resultsDiv = document.getElementById('results');  // Get the results div
+            
+            // Get filtered results based on the query
+            let filteredResults = searchResults(query);
+
+            // Clear previous results
+            resultsDiv.innerHTML = '';
+
+            // Display new results
+            if (filteredResults.length > 0) {
+                filteredResults.forEach(result => {
+                    resultsDiv.innerHTML += `
+                        <div class="result-item">
+                            <h3>${result.title}</h3>
+                            <p>${result.description}</p>
+                        </div>
+                    `;
+                });
+            } else {
+                resultsDiv.innerHTML = <p>No results found for "<strong>${query}</strong>".</p>;
+            }
+        });
+    </script>
+
+    <style>
+        /* Styling for the results */
+        .result-item {
+            padding: 15px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #fff;
+        }
+
+        .result-item h3 {
+            margin: 0 0 10px 0;
+        }
+
+        .result-item p {
+            margin: 0;
+        }
+    </style>
+</body>
+</html>
